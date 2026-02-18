@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Al-Riyas Dabka Band | فرقة الرياس للدبكة</title>
+    <meta name="description" content="Al-Riyas Dabka Band — Palestinian dance entertainment for weddings, events & celebrations across the UAE.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Noto+Kufi+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--red:#CE1126;--green:#007A3D;--black:#0a0a0a;--white:#fff;--cream:#f5f0eb;--gray:#888;--dark:#111}
+        html{scroll-behavior:smooth}
+        body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+        /* Flag stripe */
+        .flag{position:fixed;top:0;left:0;right:0;height:3px;z-index:9999;background:linear-gradient(90deg,var(--black) 25%,var(--white) 25%,var(--white) 50%,var(--green) 50%,var(--green) 75%,var(--red) 75%)}
+
+        /* Nav */
+        nav{position:fixed;top:3px;left:0;right:0;z-index:999;padding:16px 32px;display:flex;justify-content:space-between;align-items:center;background:rgba(10,10,10,0.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.05)}
+        .nav-logo{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;letter-spacing:1px}
+        .nav-logo span{color:var(--red)}
+        .nav-links{display:flex;gap:24px;list-style:none}
+        .nav-links a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:12px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;transition:color .2s}
+        .nav-links a:hover{color:var(--red)}
+        .nav-book{background:var(--red);color:white;padding:10px 24px;border-radius:50px;text-decoration:none;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;transition:all .3s}
+        .nav-book:hover{background:#fff;color:var(--red)}
+        @media(max-width:768px){.nav-links{display:none}}
+
+        /* HERO */
+        .hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:var(--black)}
+
+        /* Dabka dancer SVG background */
+        .hero-dancer{position:absolute;right:5%;top:50%;transform:translateY(-50%);width:55vw;max-width:700px;opacity:.12;z-index:1;filter:drop-shadow(0 0 60px rgba(206,17,38,0.3))}
+        @media(max-width:768px){.hero-dancer{width:90vw;right:-10%;opacity:.08;top:55%}}
+
+        /* Floating particles */
+        .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(206,17,38,0.08) 0%,transparent 50%),radial-gradient(ellipse at 70% 30%,rgba(0,122,61,0.06) 0%,transparent 40%);z-index:1}
+        .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(transparent,var(--black));z-index:2}
+
+        /* Keffiyeh overlay */
+        .keffiyeh-bg{position:absolute;inset:0;opacity:.02;background-image:repeating-linear-gradient(45deg,transparent,transparent 15px,white 15px,white 16px),repeating-linear-gradient(-45deg,transparent,transparent 15px,white 15px,white 16px);z-index:1}
+
+        .hero-content{position:relative;z-index:3;text-align:center;padding:0 24px;max-width:800px}
+        .hero-flag{font-size:40px;margin-bottom:20px;animation:float 3s ease-in-out infinite}
+        @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+        .hero-arabic{font-family:'Noto Kufi Arabic',serif;font-size:clamp(40px,9vw,90px);font-weight:700;line-height:1.1;background:linear-gradient(135deg,var(--white) 0%,var(--red) 50%,var(--green) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .hero h1{font-family:'Playfair Display',serif;font-size:clamp(16px,2.5vw,24px);font-weight:400;color:rgba(255,255,255,0.5);margin:12px 0 4px;letter-spacing:2px}
+        .hero-sub{color:rgba(255,255,255,0.25);font-size:13px;letter-spacing:3px;text-transform:uppercase;margin-bottom:40px}
+        .hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+        .btn{display:inline-flex;align-items:center;gap:8px;padding:16px 36px;border-radius:50px;font-size:13px;font-weight:600;text-decoration:none;letter-spacing:.5px;text-transform:uppercase;transition:all .3s;border:2px solid transparent;cursor:pointer}
+        .btn-red{background:var(--red);color:white;border-color:var(--red)}
+        .btn-red:hover{background:transparent;color:var(--red)}
+        .btn-ghost{background:transparent;color:white;border-color:rgba(255,255,255,0.2)}
+        .btn-ghost:hover{border-color:white}
+
+        /* Scroll arrow */
+        .scroll-arrow{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:5;color:rgba(255,255,255,0.2);animation:bounce 2s infinite;font-size:24px}
+        @keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+
+        /* Sections */
+        section{padding:100px 24px}
+        .container{max-width:1100px;margin:0 auto}
+        .tag{display:inline-block;background:rgba(206,17,38,0.15);color:var(--red);padding:5px 14px;border-radius:50px;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px}
+        .stitle{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,44px);font-weight:600;margin-bottom:8px;line-height:1.2}
+        .sarabic{font-family:'Noto Kufi Arabic',serif;color:var(--red);font-size:18px;margin-bottom:20px}
+        .sdesc{color:var(--gray);font-size:15px;line-height:1.9;max-width:550px}
+
+        /* Dividers */
+        .divider{height:1px;background:linear-gradient(90deg,transparent,rgba(206,17,38,0.3),rgba(0,122,61,0.3),transparent);margin:0 auto;max-width:600px}
+
+        /* About */
+        .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+        @media(max-width:768px){.about-grid{grid-template-columns:1fr;gap:32px}}
+        .about-visual{position:relative;aspect-ratio:4/5;border-radius:20px;overflow:hidden;background:linear-gradient(160deg,var(--green),#004d26);display:flex;align-items:center;justify-content:center}
+        .about-visual .dancer-silhouette{font-size:140px;filter:drop-shadow(0 0 40px rgba(255,255,255,0.1))}
+        .about-visual::after{content:'';position:absolute;bottom:0;left:0;right:0;height:5px;background:var(--red)}
+        .about-badge{position:absolute;bottom:-16px;right:20px;background:var(--red);color:white;padding:16px 24px;border-radius:14px;font-family:'Playfair Display',serif;font-size:18px;font-weight:700;box-shadow:0 8px 30px rgba(206,17,38,0.4)}
+        .stats{display:flex;gap:28px;margin-top:28px}
+        .stat-n{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;color:var(--green)}
+        .stat-l{font-size:11px;color:var(--gray);text-transform:uppercase;letter-spacing:1px;margin-top:2px}
+
+        /* Services */
+        .srv-section{background:var(--dark)}
+        .srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}
+        @media(max-width:768px){.srv-grid{grid-template-columns:1fr}}
+        .srv-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:32px;transition:all .3s}
+        .srv-card:hover{border-color:var(--red);transform:translateY(-4px);background:rgba(206,17,38,0.04)}
+        .srv-icon{font-size:36px;margin-bottom:16px}
+        .srv-card h3{font-size:16px;font-weight:600;margin-bottom:2px}
+        .srv-card .ar{font-family:'Noto Kufi Arabic',serif;color:var(--red);font-size:13px;margin-bottom:10px}
+        .srv-card p{color:rgba(255,255,255,0.4);font-size:13px;line-height:1.7}
+        .srv-price{margin-top:12px;color:var(--green);font-weight:700;font-size:13px}
+
+        /* Videos */
+        .vid-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:40px}
+        @media(max-width:768px){.vid-grid{grid-template-columns:1fr}}
+        .vid-card{border-radius:16px;overflow:hidden;background:var(--dark);border:1px solid rgba(255,255,255,0.06);transition:transform .3s}
+        .vid-card:hover{transform:translateY(-3px)}
+        .vid-card iframe{width:100%;aspect-ratio:16/9;border:none;display:block}
+        .vid-info{padding:14px 18px}
+        .vid-info h3{font-size:14px;font-weight:500;margin-bottom:3px}
+        .vid-info p{font-size:12px;color:var(--gray)}
+
+        /* Booking */
+        .book-section{background:var(--dark)}
+        .book-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:60px;align-items:start;margin-top:40px}
+        @media(max-width:768px){.book-grid{grid-template-columns:1fr;gap:32px}}
+        .book-info p{color:var(--gray);font-size:14px;line-height:1.9;margin-bottom:20px}
+        .book-list{list-style:none}
+        .book-list li{padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.06);font-size:13px;color:rgba(255,255,255,0.6);display:flex;align-items:center;gap:10px}
+        .book-list li::before{content:'✓';background:var(--green);color:white;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
+        .book-form{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:36px}
+        .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+        @media(max-width:768px){.form-row{grid-template-columns:1fr}}
+        .fg{margin-bottom:16px}
+        .fg label{display:block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--gray);margin-bottom:6px}
+        .fg input,.fg select,.fg textarea{width:100%;padding:13px 16px;border:1px solid rgba(255,255,255,0.1);border-radius:10px;font-family:inherit;font-size:14px;background:rgba(255,255,255,0.04);color:white;outline:none;transition:border-color .2s}
+        .fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--red)}
+        .fg textarea{resize:vertical;min-height:70px}
+        .fg select{cursor:pointer}
+        .fg select option{background:var(--dark);color:white}
+        .wa-btn{width:100%;padding:16px;background:#25d366;color:white;border:none;border-radius:50px;font-size:14px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:8px}
+        .wa-btn:hover{background:#1da851;transform:scale(1.02)}
+
+        /* Instagram */
+        .ig-section{text-align:center;padding:80px 24px;background:linear-gradient(180deg,var(--black),var(--dark))}
+        .ig-link{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);padding:16px 40px;border-radius:50px;color:white;text-decoration:none;font-weight:700;font-size:16px;transition:transform .2s,box-shadow .2s;margin-top:20px}
+        .ig-link:hover{transform:scale(1.05);box-shadow:0 8px 30px rgba(253,29,29,0.3)}
+        .ig-link svg{width:22px;height:22px;fill:white}
+
+        /* Footer */
+        footer{background:var(--black);border-top:1px solid rgba(255,255,255,0.05);padding:40px 24px;text-align:center}
+        footer p{color:rgba(255,255,255,0.2);font-size:12px;margin-bottom:8px}
+        footer a{color:rgba(255,255,255,0.3);text-decoration:none;font-size:12px}
+        footer a:hover{color:var(--red)}
+
+        /* WhatsApp float */
+        .wa-float{position:fixed;bottom:24px;right:24px;width:54px;height:54px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,0.4);z-index:998;transition:transform .2s}
+        .wa-float:hover{transform:scale(1.1)}
+        .wa-float svg{width:26px;height:26px;fill:white}
+    </style>
+</head>
+<body>
+
+<div class="flag"></div>
+
+<nav>
+    <div class="nav-logo">AL-RIYAS <span>DABKA</span></div>
+    <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#videos">Watch</a></li>
+        <li><a href="#booking">Book</a></li>
+    </ul>
+    <a href="#booking" class="nav-book">Book Now</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+    <div class="keffiyeh-bg"></div>
+
+    <!-- SVG Dabka Dancer - Gravity Defying -->
+    <svg class="hero-dancer" viewBox="0 0 500 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Gravity lines -->
+        <line x1="250" y1="0" x2="250" y2="700" stroke="rgba(206,17,38,0.15)" stroke-width="0.5" stroke-dasharray="4 8"/>
+        <line x1="200" y1="0" x2="200" y2="700" stroke="rgba(0,122,61,0.1)" stroke-width="0.3" stroke-dasharray="3 12"/>
+        <line x1="300" y1="0" x2="300" y2="700" stroke="rgba(0,122,61,0.1)" stroke-width="0.3" stroke-dasharray="3 12"/>
+
+        <!-- Floating particles -->
+        <circle cx="150" cy="200" r="3" fill="#CE1126" opacity="0.4"><animate attributeName="cy" values="200;180;200" dur="3s" repeatCount="indefinite"/></circle>
+        <circle cx="350" cy="400" r="2" fill="#007A3D" opacity="0.3"><animate attributeName="cy" values="400;380;400" dur="4s" repeatCount="indefinite"/></circle>
+        <circle cx="100" cy="500" r="2.5" fill="#CE1126" opacity="0.2"><animate attributeName="cy" values="500;485;500" dur="3.5s" repeatCount="indefinite"/></circle>
+        <circle cx="400" cy="150" r="1.5" fill="#fff" opacity="0.2"><animate attributeName="cy" values="150;140;150" dur="2.5s" repeatCount="indefinite"/></circle>
+
+        <!-- Dancer figure - gravity defying pose -->
+        <g transform="translate(250,320)" opacity="0.9">
+            <animateTransform attributeName="transform" type="translate" values="250,320;250,310;250,320" dur="4s" repeatCount="indefinite"/>
+
+            <!-- Head with keffiyeh -->
+            <circle cx="0" cy="-120" r="22" fill="none" stroke="white" stroke-width="2.5"/>
+            <path d="M-22,-120 Q-30,-140 -15,-150 L15,-150 Q30,-140 22,-120" fill="none" stroke="white" stroke-width="2" opacity="0.8"/>
+            <!-- Keffiyeh drape -->
+            <path d="M-18,-130 Q-35,-115 -28,-95" fill="none" stroke="white" stroke-width="1.5" opacity="0.5"/>
+            <path d="M18,-130 Q35,-115 28,-95" fill="none" stroke="white" stroke-width="1.5" opacity="0.5"/>
+
+            <!-- Body / Thobe -->
+            <path d="M0,-98 L-30,40 L30,40 Z" fill="none" stroke="white" stroke-width="2.5" opacity="0.7"/>
+            <!-- Thobe detail lines -->
+            <line x1="-15" y1="-60" x2="15" y2="-60" stroke="#CE1126" stroke-width="1.5" opacity="0.6"/>
+            <line x1="-20" y1="-40" x2="20" y2="-40" stroke="#007A3D" stroke-width="1" opacity="0.4"/>
+            <line x1="-10" y1="-50" x2="10" y2="-50" stroke="#CE1126" stroke-width="0.8" opacity="0.3"/>
+
+            <!-- Left arm - raised high -->
+            <path d="M-10,-85 Q-55,-110 -70,-145" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- Hand with handkerchief -->
+            <path d="M-70,-145 L-80,-155 M-70,-145 L-65,-160 M-70,-145 L-78,-148" fill="none" stroke="#CE1126" stroke-width="1.5" opacity="0.7"/>
+
+            <!-- Right arm - extended -->
+            <path d="M10,-85 Q60,-75 85,-95" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- Right hand -->
+            <circle cx="85" cy="-95" r="3" fill="none" stroke="white" stroke-width="1.5"/>
+
+            <!-- Left leg - raised high (gravity defying!) -->
+            <path d="M-15,40 Q-50,20 -65,-20" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- Left foot -->
+            <path d="M-65,-20 L-78,-22" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"/>
+
+            <!-- Right leg - supporting, slightly bent -->
+            <path d="M15,40 Q25,80 20,120" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- Right foot -->
+            <path d="M20,120 L35,122" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"/>
+
+            <!-- Embroidery patterns on thobe (tatreez) -->
+            <g opacity="0.4">
+                <rect x="-8" y="-30" width="4" height="4" fill="#CE1126" transform="rotate(45,-6,-28)"/>
+                <rect x="4" y="-30" width="4" height="4" fill="#007A3D" transform="rotate(45,6,-28)"/>
+                <rect x="-2" y="-22" width="3" height="3" fill="#CE1126" transform="rotate(45,-0.5,-20.5)"/>
+                <rect x="-8" y="0" width="3" height="3" fill="#007A3D" transform="rotate(45,-6.5,1.5)"/>
+                <rect x="5" y="0" width="3" height="3" fill="#CE1126" transform="rotate(45,6.5,1.5)"/>
+            </g>
+        </g>
+
+        <!-- Ground shadow / energy burst -->
+        <ellipse cx="270" cy="460" rx="60" ry="6" fill="white" opacity="0.05"/>
+
+        <!-- Olive branch -->
+        <g transform="translate(80,550)" opacity="0.3">
+            <path d="M0,0 Q20,-10 40,-5 Q60,-15 80,-8" fill="none" stroke="#007A3D" stroke-width="1.5"/>
+            <ellipse cx="15" cy="-8" rx="6" ry="3" fill="#007A3D" transform="rotate(-20,15,-8)"/>
+            <ellipse cx="35" cy="-12" rx="6" ry="3" fill="#007A3D" transform="rotate(10,35,-12)"/>
+            <ellipse cx="55" cy="-10" rx="6" ry="3" fill="#007A3D" transform="rotate(-15,55,-10)"/>
+            <ellipse cx="75" cy="-13" rx="5" ry="2.5" fill="#007A3D" transform="rotate(5,75,-13)"/>
+        </g>
+    </svg>
+
+    <div class="hero-content">
+        <div class="hero-flag">🇵🇸</div>
+        <div class="hero-arabic">فرقة الرياس للدبكة</div>
+        <h1>Al-Riyas Dabka Band</h1>
+        <div class="hero-sub">Palestinian Dance Entertainment · UAE</div>
+        <div class="hero-btns">
+            <a href="#booking" class="btn btn-red">Book Your Event</a>
+            <a href="#videos" class="btn btn-ghost">Watch Us</a>
+        </div>
+    </div>
+    <div class="scroll-arrow">↓</div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-visual">
+                <div class="dancer-silhouette">💃🏽</div>
+                <div class="about-badge">🇦🇪 UAE Based</div>
+            </div>
+            <div>
+                <div class="tag">About Us</div>
+                <h2 class="stitle">The Spirit of Palestine,<br>Live on Stage</h2>
+                <div class="sarabic">روح فلسطين على المسرح</div>
+                <p class="sdesc">Al-Riyas Dabka Band is a UAE-based Palestinian dabka troupe founded by <strong style="color:white">Raisan</strong> — الرياس means leadership &amp; strength. We bring the power, energy, and beauty of traditional Palestinian dance to weddings, corporate events, national days, and cultural celebrations across the Emirates.</p>
+                <p class="sdesc" style="margin-top:12px">Our performers are trained in authentic Levantine dabka styles. Every performance is a celebration of heritage, unity, and the unbreakable Palestinian spirit.</p>
+                <div class="stats">
+                    <div><div class="stat-n">200+</div><div class="stat-l">Events</div></div>
+                    <div><div class="stat-n">15+</div><div class="stat-l">Performers</div></div>
+                    <div><div class="stat-n">UAE</div><div class="stat-l">Based</div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SERVICES -->
+<section id="services" class="srv-section">
+    <div class="container" style="text-align:center">
+        <div class="tag">Services</div>
+        <h2 class="stitle">What We Offer</h2>
+        <div class="sarabic">خدماتنا</div>
+        <div class="srv-grid">
+            <div class="srv-card">
+                <div class="srv-icon">💒</div>
+                <h3>Wedding Dabka</h3>
+                <div class="ar">دبكة أعراس</div>
+                <p>Make your wedding unforgettable. Our troupe creates electric energy that gets every guest on their feet.</p>
+                <div class="srv-price">From AED 3,500</div>
+            </div>
+            <div class="srv-card">
+                <div class="srv-icon">🏢</div>
+                <h3>Corporate Events</h3>
+                <div class="ar">فعاليات شركات</div>
+                <p>Cultural entertainment for corporate gatherings, gala dinners, and national day celebrations.</p>
+                <div class="srv-price">From AED 5,000</div>
+            </div>
+            <div class="srv-card">
+                <div class="srv-icon">🎉</div>
+                <h3>Private Parties</h3>
+                <div class="ar">حفلات خاصة</div>
+                <p>Birthdays, engagements, graduations — bring dabka energy to any celebration.</p>
+                <div class="srv-price">From AED 2,500</div>
+            </div>
+            <div class="srv-card">
+                <div class="srv-icon">🎭</div>
+                <h3>Cultural Shows</h3>
+                <div class="ar">عروض ثقافية</div>
+                <p>Full cultural showcases with dabka, traditional music, and audience participation.</p>
+                <div class="srv-price">From AED 6,000</div>
+            </div>
+            <div class="srv-card">
+                <div class="srv-icon">🇦🇪</div>
+                <h3>National Day</h3>
+                <div class="ar">اليوم الوطني</div>
+                <p>Palestinian-Emirati fusion performances for national celebrations and festivals.</p>
+                <div class="srv-price">Custom</div>
+            </div>
+            <div class="srv-card">
+                <div class="srv-icon">📹</div>
+                <h3>Content & Video</h3>
+                <div class="ar">محتوى وفيديو</div>
+                <p>Professional dabka performances for music videos, social media, and promo material.</p>
+                <div class="srv-price">Custom</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- VIDEOS -->
+<section id="videos">
+    <div class="container" style="text-align:center">
+        <div class="tag">Watch</div>
+        <h2 class="stitle">Our Performances</h2>
+        <div class="sarabic">شاهد عروضنا</div>
+        <div class="vid-grid">
+            <div class="vid-card">
+                <iframe src="https://www.youtube.com/embed/FnwpO9Db_gA" title="Palestinian Dabka" allowfullscreen loading="lazy"></iframe>
+                <div class="vid-info"><h3>Traditional Palestinian Dabka</h3><p>Authentic Shamaliyya style performance</p></div>
+            </div>
+            <div class="vid-card">
+                <iframe src="https://www.youtube.com/embed/M4pogbZVJGI" title="Dabka" allowfullscreen loading="lazy"></iframe>
+                <div class="vid-info"><h3>High-Energy Group Dabka</h3><p>Synchronized excellence</p></div>
+            </div>
+            <div class="vid-card">
+                <iframe src="https://www.youtube.com/embed/bO0v_0MW0AU" title="Wedding Dabka" allowfullscreen loading="lazy"></iframe>
+                <div class="vid-info"><h3>Wedding Celebration</h3><p>Palestinian wedding dabka atmosphere</p></div>
+            </div>
+            <div class="vid-card">
+                <iframe src="https://www.youtube.com/embed/U8yoGhVOXhw" title="Dabka Spirit" allowfullscreen loading="lazy"></iframe>
+                <div class="vid-info"><h3>The Spirit of Dabka</h3><p>When we dance, the earth remembers</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- BOOKING -->
+<section id="booking" class="book-section">
+    <div class="container">
+        <div style="text-align:center">
+            <div class="tag">Book Now</div>
+            <h2 class="stitle">Reserve Your Date</h2>
+            <div class="sarabic">احجز موعدك</div>
+        </div>
+        <div class="book-grid">
+            <div class="book-info">
+                <p>Fill in your event details and we'll receive your booking request instantly via WhatsApp. Al-Riyas team will get back to you within hours.</p>
+                <ul class="book-list">
+                    <li>Professional troupe of 15+ performers</li>
+                    <li>Full sound system & traditional instruments</li>
+                    <li>Custom setlists for your event</li>
+                    <li>Available across all UAE emirates</li>
+                    <li>Traditional Palestinian costumes</li>
+                    <li>Audience participation segments</li>
+                </ul>
+                <div style="margin-top:24px">
+                    <a href="https://www.instagram.com/arab_band/" target="_blank" style="color:var(--red);text-decoration:none;font-size:14px;font-weight:600">📸 @arab_band on Instagram</a>
+                </div>
+            </div>
+            <div class="book-form">
+                <div class="form-row">
+                    <div class="fg"><label>Your Name *</label><input type="text" id="bName" placeholder="Full name" required></div>
+                    <div class="fg"><label>Phone *</label><input type="tel" id="bPhone" placeholder="+971..." required></div>
+                </div>
+                <div class="form-row">
+                    <div class="fg"><label>Event Date *</label><input type="date" id="bDate" required></div>
+                    <div class="fg"><label>Event Type *</label>
+                        <select id="bType" required>
+                            <option value="">Select...</option>
+                            <option>Wedding</option>
+                            <option>Engagement</option>
+                            <option>Corporate Event</option>
+                            <option>Private Party</option>
+                            <option>Cultural Show</option>
+                            <option>National Day</option>
+                            <option>Birthday</option>
+                            <option>Graduation</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="fg"><label>Guests</label><input type="number" id="bGuests" placeholder="e.g. 150"></div>
+                    <div class="fg"><label>Location</label><input type="text" id="bLocation" placeholder="City, venue..."></div>
+                </div>
+                <div class="fg"><label>Notes</label><textarea id="bNotes" placeholder="Special requests, preferred songs, duration..."></textarea></div>
+                <button class="wa-btn" onclick="sendBooking()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    Send via WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Instagram -->
+<div class="ig-section">
+    <div class="stitle">Follow Us</div>
+    <div class="sarabic" style="margin-top:8px">تابعونا</div>
+    <p style="color:var(--gray);max-width:400px;margin:12px auto 0;font-size:14px">Latest performances, behind-the-scenes, and booking highlights.</p>
+    <a href="https://www.instagram.com/arab_band/" target="_blank" class="ig-link">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        @arab_band
+    </a>
+</div>
+
+<!-- Footer -->
+<footer>
+    <p>🇵🇸 Al-Riyas Dabka Band © 2025</p>
+    <p>Palestinian Dance Entertainment · UAE</p>
+    <a href="https://www.instagram.com/arab_band/" target="_blank">@arab_band</a>
+</footer>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/971508068892" target="_blank" class="wa-float">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+document.getElementById('bDate').min=new Date().toISOString().split('T')[0];
+
+function sendBooking(){
+    const n=document.getElementById('bName').value;
+    const p=document.getElementById('bPhone').value;
+    const d=document.getElementById('bDate').value;
+    const t=document.getElementById('bType').value;
+    const g=document.getElementById('bGuests').value;
+    const l=document.getElementById('bLocation').value;
+    const notes=document.getElementById('bNotes').value;
+
+    if(!n||!p||!d||!t){alert('Please fill in Name, Phone, Date, and Event Type');return}
+
+    const msg=`🇵🇸 *New Booking Request*%0A%0A*Name:* ${encodeURIComponent(n)}%0A*Phone:* ${encodeURIComponent(p)}%0A*Date:* ${encodeURIComponent(d)}%0A*Event:* ${encodeURIComponent(t)}%0A*Guests:* ${encodeURIComponent(g||'N/A')}%0A*Location:* ${encodeURIComponent(l||'N/A')}%0A*Notes:* ${encodeURIComponent(notes||'None')}%0A%0A_Sent from Al-Riyas Dabka Band website_`;
+
+    window.open(`https://wa.me/971508068892?text=${msg}`,'_blank');
+}
+</script>
+
+</body>
+</html>
