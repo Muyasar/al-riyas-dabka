@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الرياس - فرقة الدبكة الفلسطينية</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --red: #EF2232;
+    --green: #009736;
+    --black: #0D0D0D;
+    --white: #FAFAF5;
+    --cream: #F5EDD8;
+    --dark-green: #005520;
+    --olive: #8B8B3A;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Cairo', sans-serif;
+    background: var(--white);
+    color: var(--black);
+    overflow-x: hidden;
+    direction: rtl;
+  }
+
+  /* KEFFIYEH SVG PATTERN */
+  .keffiyeh-bg {
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 10px,
+        rgba(0,0,0,0.06) 10px,
+        rgba(0,0,0,0.06) 11px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 10px,
+        rgba(0,0,0,0.06) 10px,
+        rgba(0,0,0,0.06) 11px
+      ),
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 14px,
+        rgba(239,34,50,0.08) 14px,
+        rgba(239,34,50,0.08) 15px
+      ),
+      repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 14px,
+        rgba(239,34,50,0.08) 14px,
+        rgba(239,34,50,0.08) 15px
+      );
+  }
+
+  /* FLAG BAR */
+  .flag-bar {
+    height: 6px;
+    background: linear-gradient(to left, var(--black) 25%, var(--white) 25% 50%, var(--green) 50% 75%, var(--red) 75%);
+  }
+  .flag-bar-top {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 200;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 6px; left: 0; right: 0;
+    z-index: 100;
+    padding: 16px 40px;
+    background: rgba(13,13,13,0.97);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(239,34,50,0.2);
+  }
+  .nav-logo {
+    font-family: 'Amiri', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--white);
+    text-shadow: 2px 2px 0 var(--red);
+  }
+  .nav-tagline {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.5);
+    display: block;
+    letter-spacing: 1px;
+  }
+  .nav-links { display: flex; gap: 24px; list-style: none; }
+  .nav-links a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: color 0.3s;
+    position: relative;
+    padding-bottom: 4px;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 0;
+    height: 2px;
+    background: var(--red);
+    transition: width 0.3s;
+  }
+  .nav-links a:hover { color: var(--white); }
+  .nav-links a:hover::after { width: 100%; }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    padding-top: 90px;
+    overflow: hidden;
+  }
+  .hero-img {
+    position: absolute;
+    inset: 0;
+    background: url('team.jpg') center 20% / cover no-repeat;
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      160deg,
+      rgba(0,149,54,0.3) 0%,
+      rgba(13,13,13,0.5) 30%,
+      rgba(13,13,13,0.9) 70%,
+      rgba(13,13,13,1) 100%
+    );
+  }
+  /* Keffiyeh diagonal overlay */
+  .hero-pattern {
+    position: absolute;
+    inset: 0;
+    opacity: 0.07;
+    background-image:
+      repeating-linear-gradient(45deg, #fff 0, #fff 1px, transparent 0, transparent 50%),
+      repeating-linear-gradient(-45deg, #fff 0, #fff 1px, transparent 0, transparent 50%);
+    background-size: 20px 20px;
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding: 0 60px 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .hero-flag-stripe {
+    display: flex;
+    gap: 0;
+    margin-bottom: 24px;
+    height: 5px;
+    width: 120px;
+  }
+  .fs1 { flex: 1; background: var(--black); }
+  .fs2 { flex: 1; background: var(--white); }
+  .fs3 { flex: 1; background: var(--green); }
+  .fs4 { width: 20px; background: var(--red); clip-path: polygon(0 0, 100% 50%, 0 100%); }
+  .hero-sub {
+    font-family: 'Amiri', serif;
+    font-size: 1rem;
+    color: var(--red);
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+    font-style: italic;
+  }
+  .hero-title {
+    font-family: 'Amiri', serif;
+    font-size: clamp(4rem, 15vw, 9rem);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 8px;
+    text-shadow: 4px 4px 0 rgba(0,0,0,0.5);
+  }
+  .hero-title-en {
+    font-size: clamp(1rem, 3vw, 1.6rem);
+    color: rgba(255,255,255,0.5);
+    font-weight: 300;
+    letter-spacing: 8px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+  }
+  .hero-desc {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.75);
+    max-width: 500px;
+    line-height: 2;
+    margin-bottom: 40px;
+  }
+  .hero-cta { display: flex; gap: 16px; flex-wrap: wrap; }
+
+  .btn-red {
+    background: var(--red);
+    color: var(--white);
+    padding: 16px 40px;
+    font-family: 'Cairo', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-red::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--green);
+    transform: translateX(100%);
+    transition: transform 0.4s;
+  }
+  .btn-red:hover::before { transform: translateX(0); }
+  .btn-red span { position: relative; z-index: 1; }
+  .btn-green-outline {
+    background: transparent;
+    color: var(--green);
+    padding: 16px 40px;
+    font-family: 'Cairo', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    border: 2px solid var(--green);
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s;
+  }
+  .btn-green-outline:hover {
+    background: var(--green);
+    color: var(--white);
+  }
+
+  /* OLIVE BRANCH DIVIDER */
+  .divider-heritage {
+    height: 40px;
+    background: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 1.2rem;
+    color: var(--green);
+    letter-spacing: 8px;
+  }
+
+  /* SECTIONS */
+  section { padding: 90px 40px; }
+  .container { max-width: 1200px; margin: 0 auto; }
+
+  .section-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--red);
+    color: var(--white);
+    padding: 6px 16px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 50%, calc(100% - 10px) 100%, 0 100%);
+  }
+  .section-title {
+    font-family: 'Amiri', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  .section-title.white { color: var(--white); }
+  .divider-line {
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(to left, var(--red), var(--green));
+    margin-bottom: 40px;
+  }
+
+  /* WHY US */
+  .why-section { background: var(--cream); }
+  .why-section .keffiyeh-section {
+    position: relative;
+  }
+  .why-header { margin-bottom: 60px; }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  .stat-card {
+    background: var(--white);
+    padding: 40px 30px;
+    text-align: center;
+    border-top: 4px solid var(--green);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    position: relative;
+    overflow: hidden;
+  }
+  .stat-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--red);
+  }
+  .stat-number {
+    font-family: 'Amiri', serif;
+    font-size: clamp(3rem, 7vw, 4.5rem);
+    font-weight: 700;
+    color: var(--green);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stat-label {
+    font-size: 0.95rem;
+    color: var(--black);
+    font-weight: 600;
+  }
+
+  /* SERVICES */
+  .services-section { background: var(--black); }
+  .services-section .section-title { color: var(--white); }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1px;
+    background: rgba(255,255,255,0.05);
+    margin-top: 60px;
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+  .service-card {
+    background: #111;
+    padding: 40px 30px;
+    transition: all 0.3s;
+    border-right: 3px solid transparent;
+    position: relative;
+    overflow: hidden;
+  }
+  .service-card:hover {
+    border-right-color: var(--red);
+    background: #181818;
+  }
+  .service-num {
+    font-family: 'Amiri', serif;
+    font-size: 3rem;
+    color: rgba(239,34,50,0.15);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .service-icon { font-size: 2rem; margin-bottom: 14px; display: block; }
+  .service-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+  .service-tag {
+    display: inline-block;
+    background: var(--red);
+    color: white;
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    margin-bottom: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+  .service-desc {
+    color: rgba(255,255,255,0.55);
+    line-height: 1.8;
+    font-size: 0.9rem;
+  }
+
+  /* VIDEO */
+  .video-section {
+    background: var(--cream);
+  }
+  .video-section .keffiyeh-bg {
+    position: relative;
+  }
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin-top: 60px;
+  }
+  .video-placeholder {
+    aspect-ratio: 16/9;
+    background: var(--black);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid rgba(239,34,50,0.3);
+  }
+  .video-placeholder::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(to left, var(--red), var(--green));
+  }
+  .video-placeholder::after {
+    content: '[ VIDEO PLACEHOLDER ]';
+    position: absolute;
+    bottom: 12px;
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 3px;
+  }
+  .play-btn-heritage {
+    width: 64px; height: 64px;
+    background: var(--red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+    transition: all 0.3s;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+  .video-placeholder:hover .play-btn-heritage {
+    background: var(--green);
+    transform: scale(1.1);
+  }
+  .video-title {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  /* HERITAGE STRIP */
+  .heritage-strip {
+    background: var(--green);
+    padding: 50px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .heritage-strip::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+      45deg,
+      rgba(255,255,255,0.03) 0px,
+      rgba(255,255,255,0.03) 2px,
+      transparent 2px,
+      transparent 20px
+    );
+  }
+  .heritage-strip h3 {
+    font-family: 'Amiri', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: var(--white);
+    position: relative;
+    line-height: 1.4;
+  }
+  .heritage-strip p {
+    color: rgba(255,255,255,0.8);
+    font-size: 1rem;
+    margin-top: 10px;
+    position: relative;
+    letter-spacing: 3px;
+  }
+
+  /* REVIEWS */
+  .reviews-section { background: var(--white); }
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-top: 60px;
+  }
+  .review-card {
+    background: var(--cream);
+    padding: 36px;
+    border-right: 4px solid var(--green);
+    position: relative;
+  }
+  .review-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+  .review-stars { color: var(--red); font-size: 1rem; }
+  .review-flag { font-size: 1.5rem; }
+  .review-text {
+    color: #333;
+    line-height: 2;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    font-family: 'Amiri', serif;
+    font-size: 1.05rem;
+  }
+  .review-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(0,0,0,0.08);
+  }
+  .author-avatar {
+    width: 40px; height: 40px;
+    background: var(--green);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .author-name { font-weight: 700; font-size: 0.9rem; }
+  .author-sub { color: var(--olive); font-size: 0.8rem; }
+
+  /* BOOKING */
+  .booking-section {
+    background: var(--black);
+    position: relative;
+    overflow: hidden;
+  }
+  .booking-section::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 40%;
+    height: 100%;
+    background: var(--red);
+    opacity: 0.05;
+    clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+  .booking-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .booking-info p {
+    color: rgba(255,255,255,0.65);
+    line-height: 1.9;
+    margin-bottom: 40px;
+    font-size: 1rem;
+  }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 16px;
+    transition: color 0.3s;
+  }
+  .contact-link:hover { color: var(--red); }
+  .contact-icon {
+    width: 44px; height: 44px;
+    background: var(--red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+  .form-group { margin-bottom: 18px; }
+  .form-group label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--green);
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-right: 3px solid var(--red);
+    padding: 13px 16px;
+    color: var(--white);
+    font-family: 'Cairo', sans-serif;
+    font-size: 0.95rem;
+    outline: none;
+    transition: all 0.3s;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-right-color: var(--green);
+    background: rgba(255,255,255,0.08);
+  }
+  .form-group select option { background: #1a1a1a; }
+  .form-group textarea { height: 120px; resize: vertical; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+  /* FOOTER */
+  footer {
+    background: #050505;
+    padding: 50px 40px 20px;
+  }
+  .footer-top {
+    height: 5px;
+    background: linear-gradient(to left, var(--black) 25%, var(--white) 25% 50%, var(--green) 50% 75%, var(--red) 75%);
+    margin-bottom: 50px;
+  }
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 40px;
+  }
+  .footer-logo {
+    font-family: 'Amiri', serif;
+    font-size: 2.5rem;
+    color: var(--white);
+    text-shadow: 2px 2px 0 var(--red);
+    display: block;
+    margin-bottom: 14px;
+  }
+  .footer-brand p { color: rgba(255,255,255,0.5); line-height: 1.9; font-size: 0.9rem; }
+  .footer-col h4 {
+    color: var(--green);
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+    font-weight: 700;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(0,149,54,0.3);
+  }
+  .footer-links { list-style: none; }
+  .footer-links li { margin-bottom: 10px; }
+  .footer-links a {
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+  }
+  .footer-links a:hover { color: var(--red); }
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgba(255,255,255,0.3);
+    font-size: 0.82rem;
+  }
+
+  /* WHATSAPP */
+  .whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    z-index: 200;
+    background: #25D366;
+    color: white;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.5);
+    animation: pulseGreen 2s ease-in-out infinite;
+    transition: transform 0.3s;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 50%, calc(100% - 10px) 100%, 0 100%);
+  }
+  .whatsapp-float:hover { transform: scale(1.1); }
+  @keyframes pulseGreen {
+    0%,100% { box-shadow: 0 4px 20px rgba(37,211,102,0.5); }
+    50% { box-shadow: 0 4px 40px rgba(37,211,102,0.9); }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px; }
+    .nav-links { display: none; }
+    .hero-content { padding: 0 20px 60px; }
+    section { padding: 70px 20px; }
+    .booking-inner { grid-template-columns: 1fr; gap: 50px; }
+    .footer-inner { grid-template-columns: 1fr; gap: 40px; }
+    .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- FLAG TOP BAR -->
+<div class="flag-bar flag-bar-top"></div>
+
+<!-- NAV -->
+<nav>
+  <div>
+    <span class="nav-logo">الرياس</span>
+    <span class="nav-tagline">فرقة الدبكة الفلسطينية • الإمارات</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#why">لماذا نحن</a></li>
+    <li><a href="#services">خدماتنا</a></li>
+    <li><a href="#videos">فيديوهات</a></li>
+    <li><a href="#reviews">آراء العملاء</a></li>
+    <li><a href="#booking">احجز الآن</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-content">
+    <div class="hero-flag-stripe">
+      <div class="fs1"></div>
+      <div class="fs2"></div>
+      <div class="fs3"></div>
+      <div class="fs4"></div>
+    </div>
+    <p class="hero-sub">تراث أصيل — دبكة فلسطينية</p>
+    <h1 class="hero-title">الرياس</h1>
+    <p class="hero-title-en">Al-Riyas</p>
+    <p class="hero-desc">
+      نحمل كوفية الجد وإيقاع الأرض الحبيبة،<br>
+      نرقص على نبض فلسطين في كل زاوية من الإمارات
+    </p>
+    <div class="hero-cta">
+      <a href="https://wa.me/971508068892" class="btn-red"><span>💬 احجز عرضنا</span></a>
+      <a href="https://instagram.com/arab_band" target="_blank" class="btn-green-outline">📸 @arab_band</a>
+    </div>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="divider-heritage">
+  🌿 &nbsp; ● &nbsp; 🌿 &nbsp; ● &nbsp; 🌿 &nbsp; ● &nbsp; 🌿
+</div>
+
+<!-- WHY -->
+<section class="why-section" id="why">
+  <div class="container">
+    <div class="why-header">
+      <div class="section-badge">🇵🇸 لماذا تختارنا</div>
+      <h2 class="section-title">الأصالة والاحتراف معاً</h2>
+      <div class="divider-line"></div>
+      <p style="color:#555; max-width:600px; line-height:1.9; font-size:1rem;">
+        نجمع بين عراقة الموروث الفلسطيني والأداء الاحترافي الحديث، لنقدم لكم تجربة فنية استثنائية لا تُنسى في كل مناسباتكم
+      </p>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-number">+500</div>
+        <div class="stat-label">حفلة ومناسبة</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">12</div>
+        <div class="stat-label">فنان متميز</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">+10</div>
+        <div class="stat-label">سنوات خبرة</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">عملاء راضون</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-section" id="services">
+  <div class="container">
+    <div class="section-badge" style="background:var(--green);">✦ خدماتنا</div>
+    <h2 class="section-title white">ما يميزنا</h2>
+    <div class="divider-line"></div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-num">٠١</div>
+        <span class="service-icon">💍</span>
+        <div class="service-tag">الأكثر طلباً</div>
+        <div class="service-title">حفلات الأعراس</div>
+        <p class="service-desc">نجعل ليلة زفافك حدثاً خالداً بأصيل الدبكة الفلسطينية وأبهى الأزياء التراثية والموسيقى الحية.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">٠٢</div>
+        <span class="service-icon">🏛️</span>
+        <div class="service-tag">مميز</div>
+        <div class="service-title">الفعاليات الرسمية</div>
+        <p class="service-desc">نشارك في المهرجانات الوطنية والمؤتمرات والحفلات الرسمية بأعلى معايير الاحتراف.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">٠٣</div>
+        <span class="service-icon">🎭</span>
+        <div class="service-tag">فني</div>
+        <div class="service-title">عروض ثقافية</div>
+        <p class="service-desc">عروض مسرحية فنية تبرز جمال التراث الفلسطيني للمراكز الثقافية والسفارات والمؤسسات.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">٠٤</div>
+        <span class="service-icon">🎪</span>
+        <div class="service-tag">ترفيهي</div>
+        <div class="service-title">مهرجانات عامة</div>
+        <p class="service-desc">حضور فني بارز في المهرجانات والأسواق الشعبية، نضفي عليها روحاً من التراث والفرح.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">٠٥</div>
+        <span class="service-icon">📚</span>
+        <div class="service-tag">تعليمي</div>
+        <div class="service-title">ورش تعليم الدبكة</div>
+        <p class="service-desc">ورش عمل تعليمية لنقل الموروث الشعبي للأجيال القادمة، نحافظ على الهوية الفلسطينية.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">٠٦</div>
+        <span class="service-icon">✈️</span>
+        <div class="service-tag">دولي</div>
+        <div class="service-title">جولات خارجية</div>
+        <p class="service-desc">نمثل فلسطين والإمارات في المهرجانات الدولية، نحمل رسالة السلام والتراث لكل العالم.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HERITAGE STRIP -->
+<div class="heritage-strip">
+  <h3>"الدبكة هي لغة الأرض، وقدمنا تكتب القصيدة"</h3>
+  <p>🇵🇸 من فلسطين الحبيبة — إلى قلوبكم</p>
+</div>
+
+<!-- VIDEO GALLERY -->
+<section class="video-section" id="videos">
+  <div class="container">
+    <div class="section-badge">▶ شاهدنا</div>
+    <h2 class="section-title">فيديوهات الفرقة</h2>
+    <div class="divider-line"></div>
+    <div class="video-grid">
+      <div class="video-placeholder">
+        <div class="play-btn-heritage">▶</div>
+        <div class="video-title">حفل زفاف — دبي 2024</div>
+      </div>
+      <div class="video-placeholder">
+        <div class="play-btn-heritage">▶</div>
+        <div class="video-title">مهرجان التراث الإماراتي</div>
+      </div>
+      <div class="video-placeholder">
+        <div class="play-btn-heritage">▶</div>
+        <div class="video-title">عرض ثقافي — أبوظبي</div>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:36px;">
+      <a href="https://instagram.com/arab_band" target="_blank" class="btn-red" style="display:inline-flex; align-items:center; gap:8px;">
+        <span>📸 تابعنا على @arab_band</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews-section" id="reviews">
+  <div class="container">
+    <div class="section-badge" style="background:var(--green);">💬 آراؤهم</div>
+    <h2 class="section-title">يقول عنا عملاؤنا</h2>
+    <div class="divider-line"></div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-top">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-flag">🇵🇸</div>
+        </div>
+        <p class="review-text">«فرقة الرياس كانت سر نجاح حفل زفافي. كأنك في قرية فلسطينية والكل يرقص من أعماق قلبه!»</p>
+        <div class="review-author">
+          <div class="author-avatar">أ</div>
+          <div>
+            <div class="author-name">أحمد الكيالي</div>
+            <div class="author-sub">دبي، 2024</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-top">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-flag">🇦🇪</div>
+        </div>
+        <p class="review-text">«احترافية عالية من أول تواصل حتى نهاية العرض. أضافوا روحاً أصيلة لمهرجاننا الثقافي.»</p>
+        <div class="review-author">
+          <div class="author-avatar">م</div>
+          <div>
+            <div class="author-name">مريم المنصوري</div>
+            <div class="author-sub">أبوظبي، 2024</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-top">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-flag">🌍</div>
+        </div>
+        <p class="review-text">«جمهورنا انبهر بالأداء. الكوفية والدبكة والموسيقى — تجربة فريدة أعادت الجميع لجذورهم.»</p>
+        <div class="review-author">
+          <div class="author-avatar">خ</div>
+          <div>
+            <div class="author-name">خالد القيسي</div>
+            <div class="author-sub">الشارقة، 2023</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="booking-section" id="booking">
+  <div class="container">
+    <div class="booking-inner">
+      <div class="booking-info">
+        <div class="section-badge">📅 احجز معنا</div>
+        <h2 class="section-title white">احجز فرقة الرياس لمناسبتك</h2>
+        <div class="divider-line"></div>
+        <p>تواصلوا معنا لحجز الفرقة لمناسبتكم. نسعى دائماً لتقديم أفضل تجربة فنية تليق بأعرافكم وتقاليدكم الجميلة.</p>
+        <a href="https://wa.me/971508068892" class="contact-link" target="_blank">
+          <div class="contact-icon">💬</div>
+          <div>
+            <div>واتساب — الأسرع</div>
+            <div style="color:var(--red);font-size:0.85rem;">+971 50 806 8892</div>
+          </div>
+        </a>
+        <a href="https://instagram.com/arab_band" class="contact-link" target="_blank">
+          <div class="contact-icon" style="background:var(--green);">📸</div>
+          <div>
+            <div>إنستغرام</div>
+            <div style="color:var(--green);font-size:0.85rem;">@arab_band</div>
+          </div>
+        </a>
+        <div style="margin-top:30px; padding:20px; border:1px solid rgba(239,34,50,0.2); background:rgba(239,34,50,0.05);">
+          <p style="color:rgba(255,255,255,0.5); font-size:0.85rem; line-height:1.8; margin-bottom:0;">
+            🇵🇸 "من فلسطين إلى قلوبكم — نحن الرياس"
+          </p>
+        </div>
+      </div>
+      <div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>الاسم</label>
+            <input type="text" placeholder="اسمك الكريم">
+          </div>
+          <div class="form-group">
+            <label>الهاتف</label>
+            <input type="tel" placeholder="+971...">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>نوع المناسبة</label>
+          <select>
+            <option>حفل زفاف</option>
+            <option>فعالية رسمية</option>
+            <option>مهرجان</option>
+            <option>عرض ثقافي</option>
+            <option>أخرى</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>تاريخ المناسبة</label>
+            <input type="date">
+          </div>
+          <div class="form-group">
+            <label>المكان</label>
+            <input type="text" placeholder="المدينة والمكان">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>رسالتك</label>
+          <textarea placeholder="أخبرنا عن مناسبتك وأي تفاصيل مهمة..."></textarea>
+        </div>
+        <a href="https://wa.me/971508068892" class="btn-red" style="width:100%; text-align:center; display:block; padding:18px;">
+          <span>إرسال الطلب عبر واتساب 🇵🇸</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top"></div>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="footer-logo">الرياس</span>
+      <p>فرقة الدبكة الفلسطينية الأصيلة في الإمارات. نحمل الكوفية والإيقاع ونرقص باسم فلسطين في كل أرجاء المعمورة.</p>
+      <div style="margin-top:20px;">
+        <span style="color:var(--green); font-size:0.8rem; letter-spacing:2px;">🇵🇸 من فلسطين — إلى العالم</span>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>روابط</h4>
+      <ul class="footer-links">
+        <li><a href="#why">لماذا نحن</a></li>
+        <li><a href="#services">خدماتنا</a></li>
+        <li><a href="#videos">الفيديوهات</a></li>
+        <li><a href="#reviews">آراء العملاء</a></li>
+        <li><a href="#booking">الحجز</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>تواصل</h4>
+      <ul class="footer-links">
+        <li><a href="https://wa.me/971508068892">💬 واتساب</a></li>
+        <li><a href="https://instagram.com/arab_band">📸 @arab_band</a></li>
+        <li><a href="#">🇦🇪 الإمارات</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 الرياس — جميع الحقوق محفوظة</span>
+    <span>🇵🇸 مع التحية من فلسطين</span>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/971508068892" class="whatsapp-float" target="_blank">💬</a>
+
+</body>
+</html>
